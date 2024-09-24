@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "728449890276",
+    "project_id": "healthandfitnesstracker-56bdb",
+    "storage_bucket": "healthandfitnesstracker-56bdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728449890276:android:d7850cab3f29395673f9f1",
+        "android_client_info": {
+          "package_name": "com.example.finalproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXhSfHEHOXTc_9-0VbDRPYd7TesFyzJ1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

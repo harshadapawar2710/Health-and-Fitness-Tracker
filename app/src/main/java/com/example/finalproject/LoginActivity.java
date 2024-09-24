@@ -138,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                progressDialog.dismiss();
 
                 try {
                     String status = response.getString("success");
@@ -158,6 +159,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this, "server error", Toast.LENGTH_SHORT).show();
             }
         });
