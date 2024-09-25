@@ -67,8 +67,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     etMo_no.setError("please enter your Mobile No");
                 } else if (etEmail.getText().toString().isEmpty()) {
                     etEmail.setError("please enter your Email");
-                } else if (etMo_no.getText().toString().length() != 10) {
-                    etMo_no.setError("please enter your Username");
+                } else if (etUsername.getText().toString().isEmpty()) {
+                    etUsername.setError("please enter your Username");
                 } else if (etPassword.getText().toString().isEmpty()) {
                     etPassword.setError("please enter your Password");
                 } else if (!etName.getText().toString().matches(".*[A-Z].*")) {
