@@ -48,8 +48,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
         setTitle("Registration Activity");
 
-        preferences=PreferenceManager.getDefaultSharedPreferences(RegistrationActivity.this);
-        editor=preferences.edit();
+        preferences = PreferenceManager.getDefaultSharedPreferences(RegistrationActivity.this);
+        editor = preferences.edit();
 
         etName = findViewById(R.id.etRegisterName);
         etMo_no = findViewById(R.id.etRegisterMobileno);
@@ -76,105 +76,53 @@ public class RegistrationActivity extends AppCompatActivity {
                 } else if (!etMo_no.getText().toString().matches(".*[0-9].*")) {
                     etMo_no.setError("please enter 10 digit no");
 
-                }
-                else
-                {
-                    progressDialog=new ProgressDialog(RegistrationActivity.this);
+                } else {
+                    progressDialog = new ProgressDialog(RegistrationActivity.this);
                     progressDialog.setTitle("please wait...");
                     progressDialog.setMessage("Registration is in process");
                     progressDialog.setCanceledOnTouchOutside(true);
                     progressDialog.show();
 
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            "+91"+ etMo_no.getText().toString(),60, TimeUnit.SECONDS,RegistrationActivity.this,
-                            new PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
+                            "+91" + etMo_no.getText().toString(), 60, TimeUnit.SECONDS, RegistrationActivity.this,
+                            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                                 @Override
                                 public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(RegistrationActivity.this,"Verification Completed",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistrationActivity.this, "Verification Completed", Toast.LENGTH_SHORT).show();
 
                                 }
 
                                 @Override
                                 public void onVerificationFailed(@NonNull FirebaseException e) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(RegistrationActivity.this,"Verification Failed",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistrationActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
 
                                 }
 
                                 @Override
                                 public void onCodeSent(@NonNull String verificationCode, @NonNull
                                 PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                    Intent intent=new Intent(RegistrationActivity.this,VerifyOTPActivity.class);
-                                    intent.putExtra("verificationcode",verificationCode);//key->string,value
-                                    intent.putExtra("name",etName.getText().toString());
-                                    intent.putExtra("mobileno",etMo_no.getText().toString());
-                                    intent.putExtra("emailId",etEmail.getText().toString());
-                                    intent.putExtra("username",etUsername.getText().toString());
-                                    intent.putExtra("password",etPassword.getText().toString());
+                                    Intent intent = new Intent(RegistrationActivity.this, VerifyOTPActivity.class);
+                                    intent.putExtra("verificationcode", verificationCode);//key->string,value
+                                    intent.putExtra("name", etName.getText().toString());
+                                    intent.putExtra("mobileno", etMo_no.getText().toString());
+                                    intent.putExtra("email", etEmail.getText().toString());
+                                    intent.putExtra("username", etUsername.getText().toString());
+                                    intent.putExtra("password", etPassword.getText().toString());
                                     startActivity(intent);
 
                                 }
                             }
-                            );
 
-
-
-
-//                    userRegisterDetails();
-
-                    }
+                    );
+//
 
                 }
-            });
 
-        }
-
-    private void userRegisterDetails() {
-
-        AsyncHttpClient client=new AsyncHttpClient();
-        RequestParams params=new RequestParams();
-
-        params.put("name",etName.getText().toString());
-        params.put("mobile_no",etMo_no.getText().toString());
-        params.put("Email",etEmail.getText().toString());
-        params.put("Username",etUsername.getText().toString());
-        params.put("Password",etPassword.getText().toString());
-
-        client.post("http://192.168.198.209:80/fittnessAPI/userregister.php",params,new JsonHttpResponseHandler()
-        {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                super.onSuccess(statusCode, headers, response);
-                progressDialog.dismiss();
-
-                try {
-                    String status=response.getString(Integer.parseInt("Success"));
-                    if(status.equals("1"))
-
-                    {
-                        Toast.makeText(RegistrationActivity.this, "Registration Successfully done", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(RegistrationActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                    }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "Already data present", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                catch (JSONException e){
-                    throw new RuntimeException(e);
-                }
             }
+        });
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                progressDialog.dismiss();
-                Toast.makeText(RegistrationActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-            }
-        }
-
-        );
     }
 }
 
