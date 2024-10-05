@@ -44,6 +44,9 @@
     android:text="SignOut"
     android:textColor="@color/white"
     android:textSize="18dp"
-    android:textStyle="bold" />
+        android:textStyle="bold" >
+
+    </androidx.appcompat.widget.AppCompatButton>
+
 
 </LinearLayout>

@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox cbShowHidePassword;
 
     Button btnlogin;
-    TextView tvNewUser;
+    TextView tvNewUser,tvForgetPassword;
     
     ProgressDialog progressDialog;
 
@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         tvNewUser = findViewById(R.id.tvloginnewuser);
         btnlogin=findViewById(R.id.btnLoginLogin);
         btnSignInWithGoogle=findViewById(R.id.acbtnLoginSignInWithGoogle);
+        tvForgetPassword=findViewById(R.id.tvLoginForgetPassword);
 
 
         googleSignInOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -88,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +126,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        tvForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,ConformRegisterMobileNoActivity.class);
+                startActivity(intent);
+            }
+        });
         tvNewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 task.getResult(ApiException.class);
-                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                Intent intent=new Intent(LoginActivity.this,MyProfileActivity.class);
                 startActivity(intent);
                 finish();
             }catch (ApiException e)

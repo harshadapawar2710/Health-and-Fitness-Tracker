@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConformRegisterMobileNoActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="16sp"
+    >
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/fitness_logo"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/etConformRegisterMobileNo"
+        android:hint="Enter Register Mobile Number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:inputType="number"
+        android:maxLength="10"
+        android:background="@drawable/btn_bgd_shape"
+        android:paddingLeft="30dp"
+        android:paddingRight="16sp"
+        android:layout_marginTop="20dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/acbtnConformRegisterMobileNoVerify"
+        android:text="Verify"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/acbtn_bg_shape"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        />
+
+
+
+
+
+</LinearLayout>

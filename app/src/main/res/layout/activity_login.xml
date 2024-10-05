@@ -57,6 +57,18 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLoginForgetPassword"
+            android:text="Forget Password?"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:paddingRight="16dp"
+            />
+
         <CheckBox
             android:id="@+id/cbLoginShowHidePassword"
             android:layout_width="match_parent"
